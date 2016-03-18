@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B0930D61C9C208B002415F1 /* CatalogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930D51C9C208B002415F1 /* CatalogModel.swift */; };
+		2B0930DD1C9C30A6002415F1 /* AGTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930DC1C9C30A6002415F1 /* AGTCoreDataStack.m */; };
+		2B0930E01C9C5B28002415F1 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930DF1C9C5B28002415F1 /* Defines.swift */; };
 		2BAC32301C9C095C00110C59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC322F1C9C095C00110C59 /* AppDelegate.swift */; };
 		2BAC32321C9C095C00110C59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC32311C9C095C00110C59 /* ViewController.swift */; };
 		2BAC32371C9C095C00110C59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC32361C9C095C00110C59 /* Assets.xcassets */; };
@@ -18,6 +20,10 @@
 
 /* Begin PBXFileReference section */
 		2B0930D51C9C208B002415F1 /* CatalogModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CatalogModel.swift; path = Model/CatalogModel.swift; sourceTree = "<group>"; };
+		2B0930DA1C9C30A6002415F1 /* Grability-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Grability-Bridging-Header.h"; sourceTree = "<group>"; };
+		2B0930DB1C9C30A6002415F1 /* AGTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGTCoreDataStack.h; path = Model/Stack/AGTCoreDataStack.h; sourceTree = "<group>"; };
+		2B0930DC1C9C30A6002415F1 /* AGTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGTCoreDataStack.m; path = Model/Stack/AGTCoreDataStack.m; sourceTree = "<group>"; };
+		2B0930DF1C9C5B28002415F1 /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defines.swift; path = Utils/Defines.swift; sourceTree = "<group>"; };
 		2BAC322C1C9C095C00110C59 /* Grability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grability.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BAC322F1C9C095C00110C59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BAC32311C9C095C00110C59 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,8 +49,26 @@
 			isa = PBXGroup;
 			children = (
 				2B0930D51C9C208B002415F1 /* CatalogModel.swift */,
+				2B0930D91C9C3056002415F1 /* Stack */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		2B0930D91C9C3056002415F1 /* Stack */ = {
+			isa = PBXGroup;
+			children = (
+				2B0930DB1C9C30A6002415F1 /* AGTCoreDataStack.h */,
+				2B0930DC1C9C30A6002415F1 /* AGTCoreDataStack.m */,
+			);
+			name = Stack;
+			sourceTree = "<group>";
+		};
+		2B0930DE1C9C5B09002415F1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2B0930DF1C9C5B28002415F1 /* Defines.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		2BAC32231C9C095C00110C59 = {
@@ -67,9 +91,11 @@
 			isa = PBXGroup;
 			children = (
 				2BAC322F1C9C095C00110C59 /* AppDelegate.swift */,
+				2B0930DA1C9C30A6002415F1 /* Grability-Bridging-Header.h */,
 				2BAC32311C9C095C00110C59 /* ViewController.swift */,
 				2B0930D41C9C204E002415F1 /* Model */,
 				2BAC32431C9C09E100110C59 /* Controllers */,
+				2B0930DE1C9C5B09002415F1 /* Utils */,
 				2BAC32361C9C095C00110C59 /* Assets.xcassets */,
 				2BAC32381C9C095C00110C59 /* LaunchScreen.storyboard */,
 				2BAC323B1C9C095C00110C59 /* Info.plist */,
@@ -156,6 +182,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B0930E01C9C5B28002415F1 /* Defines.swift in Sources */,
+				2B0930DD1C9C30A6002415F1 /* AGTCoreDataStack.m in Sources */,
 				2BAC32321C9C095C00110C59 /* ViewController.swift in Sources */,
 				2BAC32301C9C095C00110C59 /* AppDelegate.swift in Sources */,
 				2BAC32451C9C0FA800110C59 /* IpadCollectionViewController.swift in Sources */,
@@ -265,11 +293,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Grability/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Nicatec.Grability;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Grability/Grability-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -277,11 +308,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Grability/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Nicatec.Grability;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Grability/Grability-Bridging-Header.h";
 			};
 			name = Release;
 		};

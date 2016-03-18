@@ -17,26 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        
+        //inicializo el modelo y se lo encho al controlador
+        let model = CatalogModel()
+        
         var mainCont : UIViewController
         //creo  la estructura a mano, asi dependiendo del dispositivo solo cargo un controlador u otro
         //por defecto hago que si es iphone pues table, cualquier otro caso (solo deberia ser ipad) es collectionView
         if  UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            mainCont = IphoneTableViewController() as IphoneTableViewController!
+            mainCont = IphoneTableViewController(model: model) as IphoneTableViewController!
+
         } else {
             //genero el layout
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
             layout.itemSize = CGSize(width: 90, height: 90)
             //let a : IpadCollectionViewController = IpadCollectionViewController(
-            mainCont = IpadCollectionViewController(collectionViewLayout: layout) as IpadCollectionViewController!
+            mainCont = IpadCollectionViewController(collectionViewLayout: layout, model: model) as IpadCollectionViewController!
         }
-        
-        
-        
-        
+
         let navC = UINavigationController(rootViewController: mainCont)
-        navC.title = "Catalogo"
-        
+
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = navC
         window?.makeKeyAndVisible()

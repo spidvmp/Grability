@@ -11,14 +11,25 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class IpadCollectionViewController: UICollectionViewController {
-//    
-//    convenience override init(collectionViewLayout layout: UICollectionViewLayout) {
-//        self.init(collectionViewLayout: layout)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+
+    //el modelo:
+    var model : CatalogModel!
+    
+    
+    //MARK: - Inicializadores
+    convenience init(collectionViewLayout layout: UICollectionViewLayout, model: CatalogModel) {
+        self.init(collectionViewLayout: layout)
+        self.model = model
+    }
+
+    override init(collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(collectionViewLayout: layout)
+        self.title = "Catalogo"
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
