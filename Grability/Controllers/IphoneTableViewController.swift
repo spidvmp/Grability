@@ -94,6 +94,13 @@ class IphoneTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        
+        return [UIInterfaceOrientationMask.LandscapeLeft,UIInterfaceOrientationMask.LandscapeRight]
+  
+    }
 
 }
