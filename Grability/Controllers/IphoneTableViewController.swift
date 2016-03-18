@@ -45,6 +45,9 @@ class IphoneTableViewController: UITableViewController {
         self.tableView.addSubview(self.loadingView!)
         self.loadingView?.startAnimating()
         
+        // para que los resultados se muestren sobre mi vista, sino lo harian sobre el rootVC
+        self.definesPresentationContext = true
+        
     }
     
     override func viewDidAppear(animated: Bool) {

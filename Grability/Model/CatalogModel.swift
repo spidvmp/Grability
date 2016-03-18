@@ -15,10 +15,13 @@ class CatalogModel {
     //creo el modelo de datos que se persistiran en CoreData
     
     //stack de coredata, utilizo codigo de terceros
-    var stack : AGTCoreDataStack!
+    var stack = AGTCoreDataStack(modelName: "Catalog")
     
     //cargo el userdefaults
     let def = NSUserDefaults.standardUserDefaults()
+    
+    
+
     
     func openWithCompletionHandler(completion:( res : String) -> Void) {
         //funcion de bajarse el json con los datos. Si ya estan cargados sale sin hacer nada, si no se los baja, lo desmenuza y lo pone en coredata
@@ -34,7 +37,8 @@ class CatalogModel {
                 //me bajo el json
                 if let json = self.downloadJSON() {
                     //se ha bajado algo, si hay error en la conexion o no se baja nada devuelve nil
-                    //aqui tengo un array y en cada elemento tengo un diccionario con la informacion
+                    //aqui tengo un array y en cada elemento tengo un diccionario con la informacion, me lo recorro y lo inserto en coredata
+                    _ = json.map({self.checkJSONValuesAndInsert(application: $0)})
                     
                     
                     
@@ -76,6 +80,61 @@ class CatalogModel {
         //si se lo baja bien pero hay error al sacar los datos, sale por aqui
         return nil
     }
+    
+    func checkJSONValuesAndInsert(application a: JSONDictionary) {
+        //recibo una llamadapor cada elemento del JSON, extraigolos datos y si son validos los inserto en coredata
+        guard let n = a["im:name"] as? JSONDictionary,
+            let name = n["label"] as? String
+            else {
+                return
+            }
+//        guard let s = a["sumary"] as? JSONDictionary,
+//            let sumary = s["label"] as? String
+//            else {
+//                return
+//        }
+        
+        guard let c = a["category"] as? JSONDictionary,
+            let cat = c["attributes"] as? JSONDictionary,
+            let category = cat["label"] as? String
+            else {
+                return
+        }
+        
+        guard let p = a["im:price"] as? JSONDictionary,
+            let pri = p["attributes"] as? JSONDictionary,
+            let pri1 = pri["amount"] as? String ,
+            let pri2 = pri["currency"] as? String,
+            let price = pri1 + pri2 as? String
+            else {
+                return
+        }
+        
+        
+        guard let f = a["im:releaseDate"] as? JSONDictionary,
+            let fe = f["attributes"] as? JSONDictionary,
+            let date = fe["label"] as? String
+            else {
+                return
+        }
+        
+        guard let r = a["rights"] as? JSONDictionary,
+            let rights = r["label"] as? String
+            else {
+                return
+        }
+        
+        guard let ph = a["im:image"]?.lastObject as? JSONDictionary,
+            let photo = ph["label"] as? String
+            else {
+                return
+        }
+        
+        //tengo los datos, los guardo en coredata
+        ApplicationModel(name: name, category: category, price: price, date: date, rights: rights, photo: photo, context: self.context())
+        
+    }
+    
     
     //MARK: - CoreData
     func context() -> NSManagedObjectContext{

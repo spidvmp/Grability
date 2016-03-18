@@ -62,10 +62,10 @@
 		2B0930D41C9C204E002415F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2B0930D51C9C208B002415F1 /* CatalogModel.swift */,
 				2B0930EB1C9C88C5002415F1 /* ApplicationModel.swift */,
 				2B0930EC1C9C88C5002415F1 /* CategoryModel.swift */,
 				2B0930ED1C9C88C5002415F1 /* PhotoModel.swift */,
-				2B0930D51C9C208B002415F1 /* CatalogModel.swift */,
 				2B0930E11C9C8182002415F1 /* Catalog.xcdatamodeld */,
 				2B0930D91C9C3056002415F1 /* Stack */,
 				2B0930E41C9C87C6002415F1 /* Machine */,
