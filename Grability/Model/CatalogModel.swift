@@ -34,6 +34,7 @@ class CatalogModel {
                 //me bajo el json
                 if let json = self.downloadJSON() {
                     //se ha bajado algo, si hay error en la conexion o no se baja nada devuelve nil
+                    //aqui tengo un array y en cada elemento tengo un diccionario con la informacion
                     
                     
                     
@@ -54,29 +55,25 @@ class CatalogModel {
     }
     
     //MARK: - JSON
-    func downloadJSON() -> JSONDictionary? {
+    func downloadJSON() -> JSONArray? {
         let url = NSURL(string: JSONUrl)!
         
         do {
             //Aqui me bajo el json y lo desmenuzo. Si se baja lo transformo, saco la unica entrada que tiene que es feed y dentro de feed me quedo con entry, que es un array con los 20 elementos que hemos pedido y de aqui dentro sacamos loque nos falta de cada aplicacion
-
+            
             if let data = NSData(contentsOfURL: url),
                 jsondata = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? [String:AnyObject],
                 feed = jsondata["feed"] as? JSONDictionary,
-                entry = feed["entry"] as? JSONArray
-            {
-                //en entry tengo un array y cada elemento es un diccionario con los datos de cada app
-                entry.map({print($0["im:name"])})
-                
-                //print(entry)
-                
-                
+                entry = feed["entry"] as? JSONArray {
+                    //en entry tengo un array y cada elemento es un diccionario con los datos de cada app, lo retorno
+                    return entry
+                    
             }
         } catch {
             //error con el json por el motivo que sea, devuelvo nil
             return nil
         }
-        
+        //si se lo baja bien pero hay error al sacar los datos, sale por aqui
         return nil
     }
     
