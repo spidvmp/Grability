@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Xcode 7.0">
-    <entity name="Application" representedClassName=".ApplicationModel" syncable="YES">
+    <entity name="Application" representedClassName="ApplicationModel" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,11 +9,11 @@
         <relationship name="category" maxCount="1" deletionRule="Cascade" destinationEntity="Category" inverseName="application" inverseEntity="Category" syncable="YES"/>
         <relationship name="photo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Photo" inverseName="application" inverseEntity="Photo" syncable="YES"/>
     </entity>
-    <entity name="Category" representedClassName=".CategoryModel" syncable="YES">
+    <entity name="Category" representedClassName="CategoryModel" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="application" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Application" inverseName="category" inverseEntity="Application" syncable="YES"/>
     </entity>
-    <entity name="Photo" representedClassName=".PhotoModel" syncable="YES">
+    <entity name="Photo" representedClassName="PhotoModel" syncable="YES">
         <attribute name="data" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="url" attributeType="String" syncable="YES"/>
         <relationship name="application" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Application" inverseName="photo" inverseEntity="Application" syncable="YES"/>

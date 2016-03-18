@@ -11,6 +11,12 @@
 		2B0930DD1C9C30A6002415F1 /* AGTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930DC1C9C30A6002415F1 /* AGTCoreDataStack.m */; };
 		2B0930E01C9C5B28002415F1 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930DF1C9C5B28002415F1 /* Defines.swift */; };
 		2B0930E31C9C8182002415F1 /* Catalog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930E11C9C8182002415F1 /* Catalog.xcdatamodeld */; };
+		2B0930EE1C9C88C5002415F1 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930EB1C9C88C5002415F1 /* ApplicationModel.swift */; };
+		2B0930EF1C9C88C5002415F1 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930EC1C9C88C5002415F1 /* CategoryModel.swift */; };
+		2B0930F01C9C88C5002415F1 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930ED1C9C88C5002415F1 /* PhotoModel.swift */; };
+		2B0930F41C9C88D0002415F1 /* _ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930F11C9C88D0002415F1 /* _ApplicationModel.swift */; };
+		2B0930F51C9C88D0002415F1 /* _CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930F21C9C88D0002415F1 /* _CategoryModel.swift */; };
+		2B0930F61C9C88D0002415F1 /* _PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0930F31C9C88D0002415F1 /* _PhotoModel.swift */; };
 		2BAC32301C9C095C00110C59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC322F1C9C095C00110C59 /* AppDelegate.swift */; };
 		2BAC32321C9C095C00110C59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC32311C9C095C00110C59 /* ViewController.swift */; };
 		2BAC32371C9C095C00110C59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC32361C9C095C00110C59 /* Assets.xcassets */; };
@@ -26,6 +32,12 @@
 		2B0930DC1C9C30A6002415F1 /* AGTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGTCoreDataStack.m; path = Model/Stack/AGTCoreDataStack.m; sourceTree = "<group>"; };
 		2B0930DF1C9C5B28002415F1 /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defines.swift; path = Utils/Defines.swift; sourceTree = "<group>"; };
 		2B0930E21C9C8182002415F1 /* Catalog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Catalog.xcdatamodel; sourceTree = "<group>"; };
+		2B0930EB1C9C88C5002415F1 /* ApplicationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationModel.swift; path = Model/ApplicationModel.swift; sourceTree = "<group>"; };
+		2B0930EC1C9C88C5002415F1 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryModel.swift; path = Model/CategoryModel.swift; sourceTree = "<group>"; };
+		2B0930ED1C9C88C5002415F1 /* PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoModel.swift; path = Model/PhotoModel.swift; sourceTree = "<group>"; };
+		2B0930F11C9C88D0002415F1 /* _ApplicationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = _ApplicationModel.swift; path = Model/Machine/_ApplicationModel.swift; sourceTree = "<group>"; };
+		2B0930F21C9C88D0002415F1 /* _CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = _CategoryModel.swift; path = Model/Machine/_CategoryModel.swift; sourceTree = "<group>"; };
+		2B0930F31C9C88D0002415F1 /* _PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = _PhotoModel.swift; path = Model/Machine/_PhotoModel.swift; sourceTree = "<group>"; };
 		2BAC322C1C9C095C00110C59 /* Grability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grability.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BAC322F1C9C095C00110C59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BAC32311C9C095C00110C59 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,9 +62,13 @@
 		2B0930D41C9C204E002415F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2B0930EB1C9C88C5002415F1 /* ApplicationModel.swift */,
+				2B0930EC1C9C88C5002415F1 /* CategoryModel.swift */,
+				2B0930ED1C9C88C5002415F1 /* PhotoModel.swift */,
 				2B0930D51C9C208B002415F1 /* CatalogModel.swift */,
 				2B0930E11C9C8182002415F1 /* Catalog.xcdatamodeld */,
 				2B0930D91C9C3056002415F1 /* Stack */,
+				2B0930E41C9C87C6002415F1 /* Machine */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -72,6 +88,16 @@
 				2B0930DF1C9C5B28002415F1 /* Defines.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		2B0930E41C9C87C6002415F1 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				2B0930F11C9C88D0002415F1 /* _ApplicationModel.swift */,
+				2B0930F21C9C88D0002415F1 /* _CategoryModel.swift */,
+				2B0930F31C9C88D0002415F1 /* _PhotoModel.swift */,
+			);
+			name = Machine;
 			sourceTree = "<group>";
 		};
 		2BAC32231C9C095C00110C59 = {
@@ -187,12 +213,18 @@
 			files = (
 				2B0930E01C9C5B28002415F1 /* Defines.swift in Sources */,
 				2B0930DD1C9C30A6002415F1 /* AGTCoreDataStack.m in Sources */,
+				2B0930F61C9C88D0002415F1 /* _PhotoModel.swift in Sources */,
 				2BAC32321C9C095C00110C59 /* ViewController.swift in Sources */,
+				2B0930EF1C9C88C5002415F1 /* CategoryModel.swift in Sources */,
+				2B0930EE1C9C88C5002415F1 /* ApplicationModel.swift in Sources */,
 				2BAC32301C9C095C00110C59 /* AppDelegate.swift in Sources */,
+				2B0930F41C9C88D0002415F1 /* _ApplicationModel.swift in Sources */,
 				2BAC32451C9C0FA800110C59 /* IpadCollectionViewController.swift in Sources */,
 				2BAC32421C9C09DD00110C59 /* IphoneTableViewController.swift in Sources */,
+				2B0930F01C9C88C5002415F1 /* PhotoModel.swift in Sources */,
 				2B0930D61C9C208B002415F1 /* CatalogModel.swift in Sources */,
 				2B0930E31C9C8182002415F1 /* Catalog.xcdatamodeld in Sources */,
+				2B0930F51C9C88D0002415F1 /* _CategoryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
