@@ -14,13 +14,13 @@
         <relationship name="application" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Application" inverseName="category" inverseEntity="Application" syncable="YES"/>
     </entity>
     <entity name="Photo" representedClassName="PhotoModel" syncable="YES">
-        <attribute name="data" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="url" attributeType="String" syncable="YES"/>
         <relationship name="application" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Application" inverseName="photo" inverseEntity="Application" syncable="YES"/>
     </entity>
     <elements>
         <element name="Application" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="Photo" positionX="-54" positionY="27" width="128" height="90"/>
         <element name="Category" positionX="-36" positionY="54" width="128" height="75"/>
+        <element name="Photo" positionX="-54" positionY="27" width="128" height="90"/>
     </elements>
 </model>
