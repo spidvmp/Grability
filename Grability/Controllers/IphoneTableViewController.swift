@@ -74,12 +74,12 @@ class IphoneTableViewController: UITableViewController {
         }
         
         if self.showByCategory {
-            self.navigationItem.rightBarButtonItem!.title = "Aplicacion"
+            self.navigationItem.rightBarButtonItem!.title = "Aplicaciones"
             //defino el fetchedresults
             self.fc = self.model.categoriesFetchedController()
 
         } else {
-            self.navigationItem.rightBarButtonItem!.title = "Categoria"
+            self.navigationItem.rightBarButtonItem!.title = "Categorias"
             self.fc = self.model.applicationsFetchedController()
 
         }
@@ -106,9 +106,16 @@ class IphoneTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return self.fc.sections![section].numberOfObjects
     }
 
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if showByCategory {
+            return self.fc.sections![section].name
+        } else {
+            return "Aplicaciones"
+        }
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("Celda")
@@ -116,8 +123,16 @@ class IphoneTableViewController: UITableViewController {
             cell = UITableViewCell(style: .Default , reuseIdentifier: "Celda")
         }
 
-         cell!.textLabel!.text = "hola \(indexPath.row)"
-
+        //obtengo el objeto a mostrar
+        if showByCategory {
+            let cat = self.fc.objectAtIndexPath(indexPath) as! ApplicationModel
+            cell!.textLabel!.text = cat.name
+        } else {
+            let app = self.fc.objectAtIndexPath(indexPath) as! ApplicationModel
+            cell!.textLabel!.text = app.name
+        }
+        
+        
         return cell!
     }
 
@@ -171,12 +186,14 @@ class IphoneTableViewController: UITableViewController {
         showByCategory = !showByCategory
 
         if showByCategory {
-            self.navigationItem.rightBarButtonItem!.title = "Aplicacion"
+            self.navigationItem.rightBarButtonItem!.title = "Aplicaciones"
             self.fc = self.model.categoriesFetchedController()
         } else {
-            self.navigationItem.rightBarButtonItem!.title = "Categoria"
+            self.navigationItem.rightBarButtonItem!.title = "Categorias"
             self.fc = self.model.applicationsFetchedController()
         }
+        
+        _ = try! self.fc.performFetch()
         tableView.reloadData()
         
     }

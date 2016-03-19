@@ -170,17 +170,23 @@ class CatalogModel {
     }
     
     func categoriesFetchedController() -> NSFetchedResultsController {
+//        return NSFetchedResultsController(fetchRequest: self.categoriesFetchRequest(),
+//            managedObjectContext: self.stack.context,
+//            sectionNameKeyPath: "category",
+//            cacheName: nil)
         return NSFetchedResultsController(fetchRequest: self.categoriesFetchRequest(),
             managedObjectContext: self.stack.context,
-            sectionNameKeyPath: "category",
+            sectionNameKeyPath: "category.category",
             cacheName: nil)
     }
     func categoriesFetchRequest() -> NSFetchRequest {
         //fetch para buscar las aplicaciones
-        let r = NSFetchRequest(entityName: CategoryModel.entityName())
+        //let r = NSFetchRequest(entityName: CategoryModel.entityName())
+        let r = NSFetchRequest(entityName: ApplicationModel.entityName())
         //solo hay 20, pero bueno, se lo pongo
         r.fetchBatchSize = 20
-        r.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+        r.sortDescriptors = [ NSSortDescriptor(key: "category.category", ascending: true),
+            NSSortDescriptor(key: "name", ascending: true) ]
         
         return r
         
