@@ -8,17 +8,24 @@
 
 import UIKit
 
+
 class IphoneTableViewController: UITableViewController {
     
     //el modelo:
     var model : CatalogModel!
+    //activityindicator
     var loadingView : UIActivityIndicatorView? = nil
+    //bool para saber si tengo que mostrar por categorias o por nombres
+    var showByCategory : Bool = false
+    //tengo un fetchresultscontroller
+    var fc : NSFetchedResultsController!
     
     
     //MARK: - Inicializadores
     convenience init(model: CatalogModel){
         self.init()
         self.model = model
+        self.fc = NSFetchedResultsController()
         
     }
     
@@ -34,11 +41,9 @@ class IphoneTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //creo el boton para cambiar la vista de la tabla de tags a alfabetico, no le doy valor xq se actualizara en el willappear
+        let menu_button = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain , target: self, action: "cambiaVista")
+        self.navigationItem.rightBarButtonItem = menu_button
         
         self.loadingView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
         self.loadingView!.center = self.view.center
@@ -49,6 +54,11 @@ class IphoneTableViewController: UITableViewController {
         self.definesPresentationContext = true
         
     }
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//
+//    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -62,6 +72,20 @@ class IphoneTableViewController: UITableViewController {
             self.loadingView = nil
             print("Table, res=\(res)")
         }
+        
+        if self.showByCategory {
+            self.navigationItem.rightBarButtonItem!.title = "Aplicacion"
+            //defino el fetchedresults
+            self.fc = self.model.categoriesFetchedController()
+
+        } else {
+            self.navigationItem.rightBarButtonItem!.title = "Categoria"
+            self.fc = self.model.applicationsFetchedController()
+
+        }
+        
+        _ = try! self.fc.performFetch()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,7 +97,11 @@ class IphoneTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        if let a = self.fc.sections {
+            return a.count
+        } else {
+            return 0
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -138,6 +166,21 @@ class IphoneTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    //MARK: - Actions
+    func cambiaVista() {
+        showByCategory = !showByCategory
+
+        if showByCategory {
+            self.navigationItem.rightBarButtonItem!.title = "Aplicacion"
+            self.fc = self.model.categoriesFetchedController()
+        } else {
+            self.navigationItem.rightBarButtonItem!.title = "Categoria"
+            self.fc = self.model.applicationsFetchedController()
+        }
+        tableView.reloadData()
+        
+    }
+    //MARK: - Rotacion
     override func shouldAutorotate() -> Bool {
         return true
     }

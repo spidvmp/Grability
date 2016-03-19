@@ -40,7 +40,11 @@ class CatalogModel {
                     //aqui tengo un array y en cada elemento tengo un diccionario con la informacion, me lo recorro y lo inserto en coredata
                     _ = json.map({self.checkJSONValuesAndInsert(application: $0)})
                     
+                    //termina de insertar, lo grabo
+                    _ = try! self.stack.context.save()
                     
+                    //guardo en userdfaults que ya esta en coredata, para no volver a leer
+                    self.def.setBool(true, forKey: IS_JSON_IN_CORE_DATA)
                     
                 } else {
                     //error al bajarse el json
@@ -54,6 +58,9 @@ class CatalogModel {
             })
             print("despues del dispatch")
     
+        } else {
+            //ejecuto el completion
+            completion(res:"ha terminado")
         }
         print("Acabo el openWitj")
     }
@@ -143,5 +150,39 @@ class CatalogModel {
     
     func setUpCoreDataStack() {
         self.stack = AGTCoreDataStack(modelName: "Catalog")
+    }
+    
+    func applicationsFetchedController() -> NSFetchedResultsController {
+        return NSFetchedResultsController(fetchRequest: self.applicationsFetchRequest(),
+            managedObjectContext: self.stack.context,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+    }
+    func applicationsFetchRequest() -> NSFetchRequest {
+        //fetch para buscar las aplicaciones
+        let r = NSFetchRequest(entityName: ApplicationModel.entityName())
+        //solo hay 20, pero bueno, se lo pongo
+        r.fetchBatchSize = 20
+        r.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        return r
+        
+    }
+    
+    func categoriesFetchedController() -> NSFetchedResultsController {
+        return NSFetchedResultsController(fetchRequest: self.categoriesFetchRequest(),
+            managedObjectContext: self.stack.context,
+            sectionNameKeyPath: "category",
+            cacheName: nil)
+    }
+    func categoriesFetchRequest() -> NSFetchRequest {
+        //fetch para buscar las aplicaciones
+        let r = NSFetchRequest(entityName: CategoryModel.entityName())
+        //solo hay 20, pero bueno, se lo pongo
+        r.fetchBatchSize = 20
+        r.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+        
+        return r
+        
     }
 }
