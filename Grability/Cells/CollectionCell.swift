@@ -19,6 +19,7 @@ class CollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func prepareForReuse() {
@@ -37,8 +38,13 @@ class CollectionCell: UICollectionViewCell {
         
         //me han pasado el objeto de coredata, asigno los valores a lo que tengo que mostrar
         self.appModel = app
-        
         self.appLbl.text = self.appModel.name
+        self.appLbl.textAlignment = .Center
+        //conprobamos si tenemos imagen,
+        if self.appModel.photo!.image != nil {
+            //tenemos foto, la ponemos
+            self.photoView.image = self.appModel.photo!.image
+        }
         
         //observamos el valor de la imagen
         self.appModel.addObserver(self,
@@ -60,7 +66,11 @@ class CollectionCell: UICollectionViewCell {
     
     //MARK: - funciones de clase para obtener la altura y el nombre de la celda
     class func height() -> CGFloat {
-        return 100
+        return 143
+    }
+    
+    class func width() -> CGFloat {
+        return 120
     }
     
     class func cellID() -> String {

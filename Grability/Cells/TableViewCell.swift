@@ -50,14 +50,12 @@ class TableViewCell: UITableViewCell {
             //tenemos foto, la ponemos
             self.photoView.image = self.appModel.photo!.image
         }
-
-
-            
-            self.appModel.addObserver(self,
-                forKeyPath: "photo.data",
-                options: .New ,
-                context: nil)
-
+        
+        self.appModel.addObserver(self,
+            forKeyPath: "photo.data",
+            options: .New ,
+            context: nil)
+        
         
     }
     

@@ -30,8 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             //genero el layout
             let layout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-            layout.itemSize = CGSize(width: 90, height: 90)
+            layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            layout.scrollDirection = .Vertical
+            layout.itemSize = CGSize(width: CollectionCell.width(), height: CollectionCell.height())
             //let a : IpadCollectionViewController = IpadCollectionViewController(
             mainCont = IpadCollectionViewController(collectionViewLayout: layout, model: model) as IpadCollectionViewController!
         }

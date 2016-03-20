@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+//private let reuseIdentifier = "Cell"
 
 class IpadCollectionViewController: UICollectionViewController {
 
@@ -61,7 +61,7 @@ class IpadCollectionViewController: UICollectionViewController {
         self.definesPresentationContext = true
 
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         
     }
@@ -99,7 +99,7 @@ class IpadCollectionViewController: UICollectionViewController {
         }
         
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.collectionView!.backgroundColor = UIColor.whiteColor()
     }
     
 

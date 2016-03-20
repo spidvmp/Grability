@@ -3,47 +3,49 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionCell" customModule="Grability" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="70" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="120" height="143"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="70" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="120" height="143"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="EmptyApp.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yi9-yg-GGk">
-                        <rect key="frame" x="10" y="1" width="50" height="50"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyApp.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yi9-yg-GGk">
+                        <rect key="frame" x="15" y="1" width="90" height="90"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Yi9-yg-GGk" secondAttribute="height" multiplier="1:1" id="Psn-zX-XeL"/>
+                            <constraint firstAttribute="width" constant="90" id="KHQ-aL-0xc"/>
+                            <constraint firstAttribute="height" constant="90" id="yPl-zK-Ahd"/>
                         </constraints>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S4c-RS-gy4" userLabel="I">
-                        <rect key="frame" x="0.0" y="52" width="70" height="48"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4c-RS-gy4" userLabel="I">
+                        <rect key="frame" x="0.0" y="93" width="120" height="50"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="48" id="mRJ-hB-CPz"/>
-                            <constraint firstAttribute="width" constant="70" id="sMg-gQ-OPK"/>
+                            <constraint firstAttribute="height" constant="50" id="J1u-ze-gnf"/>
+                            <constraint firstAttribute="width" constant="120" id="MNT-jd-v5k"/>
                         </constraints>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="Yi9-yg-GGk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="VZZ-Uh-ngX"/>
-                <constraint firstItem="S4c-RS-gy4" firstAttribute="top" secondItem="Yi9-yg-GGk" secondAttribute="bottom" constant="1" id="X6Q-QU-Hxe"/>
-                <constraint firstItem="Yi9-yg-GGk" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ni9-02-8Hi"/>
-                <constraint firstItem="S4c-RS-gy4" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="yjJ-g9-ah4"/>
+                <constraint firstItem="S4c-RS-gy4" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ClV-Sj-aRm"/>
+                <constraint firstItem="S4c-RS-gy4" firstAttribute="top" secondItem="Yi9-yg-GGk" secondAttribute="bottom" constant="2" id="IE5-qa-9lp"/>
+                <constraint firstItem="Yi9-yg-GGk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="Usi-tr-Kce"/>
+                <constraint firstItem="Yi9-yg-GGk" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zst-hB-kbA"/>
             </constraints>
+            <size key="customSize" width="120" height="143"/>
             <connections>
                 <outlet property="appLbl" destination="S4c-RS-gy4" id="lfl-DA-bu1"/>
                 <outlet property="photoView" destination="Yi9-yg-GGk" id="3hW-gZ-O3e"/>
             </connections>
+            <point key="canvasLocation" x="-8" y="297.5"/>
         </collectionViewCell>
     </objects>
     <resources>
