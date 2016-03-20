@@ -14,12 +14,19 @@ class IpadCollectionViewController: UICollectionViewController {
 
     //el modelo:
     var model : CatalogModel!
+    //activityindicator
+    var loadingView : UIActivityIndicatorView? = nil
+    //bool para saber si tengo que mostrar por categorias o por nombres
+    var showByCategory : Bool = false
+    //tengo un fetchresultscontroller
+    var fc : NSFetchedResultsController!
     
     
     //MARK: - Inicializadores
     convenience init(collectionViewLayout layout: UICollectionViewLayout, model: CatalogModel) {
         self.init(collectionViewLayout: layout)
         self.model = model
+        self.fc = NSFetchedResultsController()
     }
 
     override init(collectionViewLayout layout: UICollectionViewLayout) {
@@ -37,47 +44,95 @@ class IpadCollectionViewController: UICollectionViewController {
         //self.collectionViewLayout = UICollectionViewLayout()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        
+        //registro la celda
+        registerNib()
+        
+        //creo el boton para cambiar la vista de la tabla de tags a alfabetico, no le doy valor xq se actualizara en el willappear
+        let menu_button = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain , target: self, action: "cambiaVista")
+        self.navigationItem.rightBarButtonItem = menu_button
+        
+        self.loadingView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        self.loadingView!.center = self.view.center
+        self.collectionView!.addSubview(self.loadingView!)
+        self.loadingView?.startAnimating()
+        
+        // para que los resultados se muestren sobre mi vista, sino lo harian sobre el rootVC
+        self.definesPresentationContext = true
 
         // Register cell classes
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.whiteColor()    
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //cargamos el modelo
+        self.model.openWithCompletionHandler { () -> Void in
+            
+            //eliminamos el loadingactivity
+            self.loadingView?.stopAnimating()
+            self.loadingView?.removeFromSuperview()
+            self.loadingView = nil
+            
+            
+            if self.showByCategory {
+                self.navigationItem.rightBarButtonItem!.title = "Aplicaciones"
+                //defino el fetchedresults
+                self.fc = self.model.categoriesFetchedController()
+                
+            } else {
+                self.navigationItem.rightBarButtonItem!.title = "Categorias"
+                self.fc = self.model.applicationsFetchedController()
+                
+            }
+            
+            _ = try! self.fc.performFetch()
+            self.collectionView!.reloadData()
+            
+        }
+        
+        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.whiteColor()
     }
-    */
+    
+
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        if let a = self.fc.sections {
+            return a.count
+        } else {
+            return 0
+        }
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 10
+        
+        return self.fc.sections![section].numberOfObjects
     }
+    
+    
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-    
-        // Configure the cell
-        cell.backgroundColor = UIColor.greenColor() 
+        
+        //obtengo el objeto a mostrar
+        let app = self.fc.objectAtIndexPath(indexPath) as! ApplicationModel
+        
+        //creo la celda
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CollectionCell.cellID(), forIndexPath: indexPath) as! CollectionCell
+
+        //le paso el objeto coredata para que se muestre
+        cell.observeApp(app)
+        
         
     
         return cell
@@ -113,7 +168,29 @@ class IpadCollectionViewController: UICollectionViewController {
     
     }
     */
+    //MARK: - Utils
+    func registerNib() {
+        let nib = UINib(nibName: "CollectionCell", bundle: NSBundle.mainBundle())
+        self.collectionView!.registerNib(nib, forCellWithReuseIdentifier: CollectionCell.cellID())
+    }
     
+    
+    //MARK: - Actions
+    func cambiaVista() {
+        showByCategory = !showByCategory
+        
+        if showByCategory {
+            self.navigationItem.rightBarButtonItem!.title = "Aplicaciones"
+            self.fc = self.model.categoriesFetchedController()
+        } else {
+            self.navigationItem.rightBarButtonItem!.title = "Categorias"
+            self.fc = self.model.applicationsFetchedController()
+        }
+        
+        _ = try! self.fc.performFetch()
+        collectionView!.reloadData()
+        
+    }
 
     override func shouldAutorotate() -> Bool {
         return true
