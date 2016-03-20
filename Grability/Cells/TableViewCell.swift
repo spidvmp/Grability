@@ -55,8 +55,8 @@ class TableViewCell: UITableViewCell {
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         //ha cambiado la imagen, la cambio
-        UIView.transitionWithView(self.imageView!, duration: 0.5, options: .TransitionCrossDissolve , animations: { () -> Void in
-            self.imageView?.image = self.appModel.photo?.image
+        UIView.transitionWithView(self.photoView!, duration: 0.5, options: .TransitionCrossDissolve , animations: { () -> Void in
+            self.photoView?.image = self.appModel.photo?.image
             }) { (Bool) -> Void in
                 
         }
