@@ -22,6 +22,7 @@
 		2B0AD7531C9E8D2400672C2E /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0AD7511C9E8D2400672C2E /* CollectionCell.swift */; };
 		2B0AD7541C9E8D2400672C2E /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B0AD7521C9E8D2400672C2E /* CollectionCell.xib */; };
 		2B0AD7561C9E94AF00672C2E /* EmptyApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B0AD7551C9E94AF00672C2E /* EmptyApp.png */; };
+		2B0AD7581C9EB63200672C2E /* AsynDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0AD7571C9EB63200672C2E /* AsynDownload.swift */; };
 		2BAC32301C9C095C00110C59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC322F1C9C095C00110C59 /* AppDelegate.swift */; };
 		2BAC32321C9C095C00110C59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC32311C9C095C00110C59 /* ViewController.swift */; };
 		2BAC32371C9C095C00110C59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC32361C9C095C00110C59 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		2B0AD7511C9E8D2400672C2E /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionCell.swift; path = Cells/CollectionCell.swift; sourceTree = "<group>"; };
 		2B0AD7521C9E8D2400672C2E /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionCell.xib; path = Cells/CollectionCell.xib; sourceTree = "<group>"; };
 		2B0AD7551C9E94AF00672C2E /* EmptyApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EmptyApp.png; path = Utils/EmptyApp.png; sourceTree = "<group>"; };
+		2B0AD7571C9EB63200672C2E /* AsynDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsynDownload.swift; path = Utils/AsynDownload.swift; sourceTree = "<group>"; };
 		2BAC322C1C9C095C00110C59 /* Grability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grability.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BAC322F1C9C095C00110C59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BAC32311C9C095C00110C59 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				2B0AD7551C9E94AF00672C2E /* EmptyApp.png */,
 				2B0930DF1C9C5B28002415F1 /* Defines.swift */,
+				2B0AD7571C9EB63200672C2E /* AsynDownload.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				2B0930EE1C9C88C5002415F1 /* ApplicationModel.swift in Sources */,
 				2BAC32301C9C095C00110C59 /* AppDelegate.swift in Sources */,
 				2B0930F41C9C88D0002415F1 /* _ApplicationModel.swift in Sources */,
+				2B0AD7581C9EB63200672C2E /* AsynDownload.swift in Sources */,
 				2BAC32451C9C0FA800110C59 /* IpadCollectionViewController.swift in Sources */,
 				2BAC32421C9C09DD00110C59 /* IphoneTableViewController.swift in Sources */,
 				2B0AD7531C9E8D2400672C2E /* CollectionCell.swift in Sources */,

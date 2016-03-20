@@ -30,9 +30,10 @@ class TableViewCell: UITableViewCell {
         
         //limpiamos los valores
         self.appModel.removeObserver(self, forKeyPath: "photo.data")
+
         self.appModel = nil
         self.appLbl.text = nil
-        
+        self.photoView.image = nil
     }
     
 
@@ -44,12 +45,19 @@ class TableViewCell: UITableViewCell {
         
         self.appLbl.text = self.appModel.name
         
-        //observamos el valor de la imagen
-        self.appModel.addObserver(self,
-            forKeyPath: "photo.data",
-            options: .New ,
-            context: nil)
-        
+        //conprobamos si tenemos imagen,
+        if self.appModel.photo!.image != nil {
+            //tenemos foto, la ponemos
+            self.photoView.image = self.appModel.photo!.image
+        }
+
+
+            
+            self.appModel.addObserver(self,
+                forKeyPath: "photo.data",
+                options: .New ,
+                context: nil)
+
         
     }
     

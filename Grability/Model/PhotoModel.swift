@@ -33,6 +33,8 @@ public class PhotoModel: _PhotoModel {
                 return i
             }
             else {
+                //no tengo valor. he de bajarmelo, paso el objeto core data y una vez descargado se guarda. Si ya no existe la celda se guarda igualemnte
+                AsyncDownLoadImageFrom(coredataObject: self)
                 return nil
             }
         }
