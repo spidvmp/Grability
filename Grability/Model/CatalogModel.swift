@@ -23,17 +23,16 @@ class CatalogModel {
     
 
     
-    func openWithCompletionHandler(completion:( res : String) -> Void) {
+    func openWithCompletionHandler(completion:() -> Void) {
         //funcion de bajarse el json con los datos. Si ya estan cargados sale sin hacer nada, si no se los baja, lo desmenuza y lo pone en coredata
-        
-        print("Entro en CatalogModel completionhandler")
+
         
         //compruebo si tengo los datos cargados
         if  !def.boolForKey(IS_JSON_IN_CORE_DATA) {
             //No esta cargado, me lo bajo y lo cargo
-            print("No esta cargado")
+
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-                
+
                 //me bajo el json
                 if let json = self.downloadJSON() {
                     //se ha bajado algo, si hay error en la conexion o no se baja nada devuelve nil
@@ -45,24 +44,25 @@ class CatalogModel {
                     
                     //guardo en userdfaults que ya esta en coredata, para no volver a leer
                     self.def.setBool(true, forKey: IS_JSON_IN_CORE_DATA)
+
                     
                 } else {
                     //error al bajarse el json
                 }
                 //en primerplano
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(res: "Ha terminado")
+                    completion()
                 })
 
             
             })
-            print("despues del dispatch")
+
     
         } else {
             //ejecuto el completion
-            completion(res:"ha terminado")
+            completion()
         }
-        print("Acabo el openWitj")
+
     }
     
     //MARK: - JSON

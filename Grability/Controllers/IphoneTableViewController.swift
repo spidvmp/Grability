@@ -54,38 +54,35 @@ class IphoneTableViewController: UITableViewController {
         self.definesPresentationContext = true
         
     }
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//
-//    }
+
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         //cargamos el modelo
-        self.model.openWithCompletionHandler { (res) -> Void in
+        self.model.openWithCompletionHandler { () -> Void in
             
             //eliminamos el loadingactivity
             self.loadingView?.stopAnimating()
             self.loadingView?.removeFromSuperview()
             self.loadingView = nil
-            print("Table, res=\(res)")
-        }
-        
-        if self.showByCategory {
-            self.navigationItem.rightBarButtonItem!.title = "Aplicaciones"
-            //defino el fetchedresults
-            self.fc = self.model.categoriesFetchedController()
+            
+            
+            if self.showByCategory {
+                self.navigationItem.rightBarButtonItem!.title = "Aplicaciones"
+                //defino el fetchedresults
+                self.fc = self.model.categoriesFetchedController()
+                
+            } else {
+                self.navigationItem.rightBarButtonItem!.title = "Categorias"
+                self.fc = self.model.applicationsFetchedController()
+                
+            }
 
-        } else {
-            self.navigationItem.rightBarButtonItem!.title = "Categorias"
-            self.fc = self.model.applicationsFetchedController()
-
+            _ = try! self.fc.performFetch()
+            self.tableView.reloadData()
+            
         }
-        
-        _ = try! self.fc.performFetch()
-        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,7 +93,6 @@ class IphoneTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         if let a = self.fc.sections {
             return a.count
         } else {
@@ -105,7 +101,7 @@ class IphoneTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+
         return self.fc.sections![section].numberOfObjects
     }
 
