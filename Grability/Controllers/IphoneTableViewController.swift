@@ -40,6 +40,9 @@ class IphoneTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //registro la celda
+        registerNib()
 
         //creo el boton para cambiar la vista de la tabla de tags a alfabetico, no le doy valor xq se actualizara en el willappear
         let menu_button = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain , target: self, action: "cambiaVista")
@@ -53,6 +56,8 @@ class IphoneTableViewController: UITableViewController {
         // para que los resultados se muestren sobre mi vista, sino lo harian sobre el rootVC
         self.definesPresentationContext = true
         
+        //configuro el alto de las celdas
+        self.tableView.rowHeight = TableViewCell.height()
     }
 
     
@@ -114,22 +119,16 @@ class IphoneTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("Celda")
-        if cell == nil {
-            cell = UITableViewCell(style: .Default , reuseIdentifier: "Celda")
-        }
-
         //obtengo el objeto a mostrar
-        if showByCategory {
-            let cat = self.fc.objectAtIndexPath(indexPath) as! ApplicationModel
-            cell!.textLabel!.text = cat.name
-        } else {
-            let app = self.fc.objectAtIndexPath(indexPath) as! ApplicationModel
-            cell!.textLabel!.text = app.name
-        }
+        let app = self.fc.objectAtIndexPath(indexPath) as! ApplicationModel
         
+        //creo la celda
+        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.cellID(), forIndexPath: indexPath) as! TableViewCell
         
-        return cell!
+        //le paso el objeto coredata para que se muestre
+        cell.observeApp(app)
+        
+        return cell
     }
 
 
@@ -177,6 +176,13 @@ class IphoneTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    //MARK: - Utils
+    func registerNib() {
+        let nib = UINib(nibName: "TableViewCell", bundle: NSBundle.mainBundle())
+        self.tableView.registerNib(nib, forCellReuseIdentifier: TableViewCell.cellID())
+    }
+    
+    
     //MARK: - Actions
     func cambiaVista() {
         showByCategory = !showByCategory
