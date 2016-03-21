@@ -3,12 +3,16 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Grability" customModuleProvider="target">
             <connections>
+                <outlet property="date" destination="MFV-5Z-r7h" id="c9t-Ve-Q3u"/>
                 <outlet property="name" destination="pkD-rD-nEw" id="CbZ-WF-zo6"/>
                 <outlet property="photo" destination="HDr-HV-ndt" id="im3-pK-N88"/>
+                <outlet property="price" destination="XFZ-dv-OhT" id="X7V-wN-ycP"/>
+                <outlet property="rights" destination="62W-uq-dRW" id="rDO-cf-k7i"/>
                 <outlet property="view" destination="iN0-l3-epB" id="5YU-YJ-1rj"/>
             </connections>
         </placeholder>
@@ -42,19 +46,49 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFZ-dv-OhT">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFV-5Z-r7h">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62W-uq-dRW">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="pkD-rD-nEw" secondAttribute="trailing" constant="14" id="8h4-cg-3Th"/>
+                <constraint firstItem="62W-uq-dRW" firstAttribute="leading" secondItem="HDr-HV-ndt" secondAttribute="leading" id="EWp-lX-vh6"/>
                 <constraint firstItem="pkD-rD-nEw" firstAttribute="top" secondItem="HDr-HV-ndt" secondAttribute="top" id="ODD-RG-Z8n"/>
                 <constraint firstItem="HDr-HV-ndt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="56" id="P1K-KK-g2P"/>
+                <constraint firstItem="62W-uq-dRW" firstAttribute="trailing" secondItem="MFV-5Z-r7h" secondAttribute="trailing" id="QXb-63-H76"/>
+                <constraint firstItem="MFV-5Z-r7h" firstAttribute="top" secondItem="XFZ-dv-OhT" secondAttribute="bottom" constant="9" id="RG5-JW-oX9"/>
+                <constraint firstItem="XFZ-dv-OhT" firstAttribute="leading" secondItem="pkD-rD-nEw" secondAttribute="leading" id="d0y-bO-H7p"/>
+                <constraint firstItem="XFZ-dv-OhT" firstAttribute="trailing" secondItem="pkD-rD-nEw" secondAttribute="trailing" id="d3o-Px-ZNY"/>
                 <constraint firstItem="HDr-HV-ndt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="dUi-NU-9Im"/>
+                <constraint firstItem="XFZ-dv-OhT" firstAttribute="top" secondItem="pkD-rD-nEw" secondAttribute="bottom" constant="8" id="h7I-fQ-niu"/>
                 <constraint firstItem="pkD-rD-nEw" firstAttribute="leading" secondItem="HDr-HV-ndt" secondAttribute="trailing" constant="8" id="hg9-kK-gFc"/>
+                <constraint firstItem="62W-uq-dRW" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="tFa-UR-LKR"/>
+                <constraint firstItem="MFV-5Z-r7h" firstAttribute="leading" secondItem="pkD-rD-nEw" secondAttribute="leading" id="vVf-mQ-Zkn"/>
+                <constraint firstItem="MFV-5Z-r7h" firstAttribute="trailing" secondItem="pkD-rD-nEw" secondAttribute="trailing" id="wOc-M0-wVL"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="HDr-HV-ndt"/>
                     <exclude reference="pkD-rD-nEw"/>
+                    <exclude reference="XFZ-dv-OhT"/>
+                    <exclude reference="MFV-5Z-r7h"/>
+                    <exclude reference="62W-uq-dRW"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="P1K-KK-g2P"/>
@@ -62,12 +96,24 @@
                     <exclude reference="8h4-cg-3Th"/>
                     <exclude reference="ODD-RG-Z8n"/>
                     <exclude reference="hg9-kK-gFc"/>
+                    <exclude reference="d0y-bO-H7p"/>
+                    <exclude reference="d3o-Px-ZNY"/>
+                    <exclude reference="h7I-fQ-niu"/>
+                    <exclude reference="RG5-JW-oX9"/>
+                    <exclude reference="vVf-mQ-Zkn"/>
+                    <exclude reference="wOc-M0-wVL"/>
+                    <exclude reference="EWp-lX-vh6"/>
+                    <exclude reference="QXb-63-H76"/>
+                    <exclude reference="tFa-UR-LKR"/>
                 </mask>
             </variation>
             <variation key="heightClass=compact">
                 <mask key="subviews">
                     <include reference="HDr-HV-ndt"/>
                     <include reference="pkD-rD-nEw"/>
+                    <include reference="XFZ-dv-OhT"/>
+                    <include reference="MFV-5Z-r7h"/>
+                    <include reference="62W-uq-dRW"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="P1K-KK-g2P"/>
@@ -75,6 +121,15 @@
                     <include reference="8h4-cg-3Th"/>
                     <include reference="ODD-RG-Z8n"/>
                     <include reference="hg9-kK-gFc"/>
+                    <include reference="d0y-bO-H7p"/>
+                    <include reference="d3o-Px-ZNY"/>
+                    <include reference="h7I-fQ-niu"/>
+                    <include reference="RG5-JW-oX9"/>
+                    <include reference="vVf-mQ-Zkn"/>
+                    <include reference="wOc-M0-wVL"/>
+                    <include reference="EWp-lX-vh6"/>
+                    <include reference="QXb-63-H76"/>
+                    <include reference="tFa-UR-LKR"/>
                 </mask>
             </variation>
         </view>

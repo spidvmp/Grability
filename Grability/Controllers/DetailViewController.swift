@@ -14,9 +14,10 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var price: UILabel!
     
-    
-    
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var rights: UILabel!
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nil)
     }
@@ -40,6 +41,9 @@ class DetailViewController: UIViewController {
             self.photo.image = model.photo?.image
         }
         self.name.text = model.name
+        self.date.text = model.date
+        self.rights.text = model.rights
+        self.price.text = model.price
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

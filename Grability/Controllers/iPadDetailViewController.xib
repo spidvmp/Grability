@@ -7,8 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Grability" customModuleProvider="target">
             <connections>
+                <outlet property="date" destination="amk-Hj-HMb" id="ZDC-Ah-Fky"/>
                 <outlet property="name" destination="bCE-ae-dgP" id="YtI-bU-p2D"/>
                 <outlet property="photo" destination="HHb-CH-cOb" id="nRm-oQ-EHG"/>
+                <outlet property="price" destination="nCg-r7-RhK" id="6EA-hX-wDP"/>
+                <outlet property="rights" destination="Iku-n7-YYO" id="te3-bA-qv7"/>
                 <outlet property="view" destination="iN0-l3-epB" id="aKE-d5-GzO"/>
             </connections>
         </placeholder>
@@ -42,19 +45,49 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCg-r7-RhK">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amk-Hj-HMb">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iku-n7-YYO">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="nCg-r7-RhK" firstAttribute="trailing" secondItem="bCE-ae-dgP" secondAttribute="trailing" id="22g-V4-UN2"/>
                 <constraint firstItem="bCE-ae-dgP" firstAttribute="top" secondItem="HHb-CH-cOb" secondAttribute="top" id="39p-iq-7DB"/>
+                <constraint firstItem="Iku-n7-YYO" firstAttribute="leading" secondItem="bCE-ae-dgP" secondAttribute="leading" id="7am-Nn-Knz"/>
+                <constraint firstItem="nCg-r7-RhK" firstAttribute="leading" secondItem="bCE-ae-dgP" secondAttribute="leading" id="BVh-Jj-uOL"/>
+                <constraint firstItem="nCg-r7-RhK" firstAttribute="top" secondItem="bCE-ae-dgP" secondAttribute="bottom" constant="16" id="ImJ-s7-XgX"/>
                 <constraint firstAttribute="trailing" secondItem="bCE-ae-dgP" secondAttribute="trailing" constant="26" id="LB2-CS-CS0"/>
+                <constraint firstItem="amk-Hj-HMb" firstAttribute="top" secondItem="nCg-r7-RhK" secondAttribute="bottom" constant="16" id="Ld3-Q1-Trq"/>
+                <constraint firstItem="Iku-n7-YYO" firstAttribute="trailing" secondItem="bCE-ae-dgP" secondAttribute="trailing" id="Nfw-4W-6HJ"/>
                 <constraint firstItem="HHb-CH-cOb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="RyG-ql-VJ7"/>
                 <constraint firstItem="bCE-ae-dgP" firstAttribute="leading" secondItem="HHb-CH-cOb" secondAttribute="trailing" constant="35" id="a9O-sn-lwS"/>
+                <constraint firstItem="amk-Hj-HMb" firstAttribute="leading" secondItem="bCE-ae-dgP" secondAttribute="leading" id="lC2-Lw-I8i"/>
+                <constraint firstItem="amk-Hj-HMb" firstAttribute="trailing" secondItem="bCE-ae-dgP" secondAttribute="trailing" id="tyu-nJ-JgT"/>
                 <constraint firstItem="HHb-CH-cOb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="97" id="vVL-kn-n9b"/>
+                <constraint firstItem="Iku-n7-YYO" firstAttribute="top" secondItem="amk-Hj-HMb" secondAttribute="bottom" constant="16" id="xag-yI-eih"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="HHb-CH-cOb"/>
                     <exclude reference="bCE-ae-dgP"/>
+                    <exclude reference="nCg-r7-RhK"/>
+                    <exclude reference="amk-Hj-HMb"/>
+                    <exclude reference="Iku-n7-YYO"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="RyG-ql-VJ7"/>
@@ -62,12 +95,24 @@
                     <exclude reference="39p-iq-7DB"/>
                     <exclude reference="LB2-CS-CS0"/>
                     <exclude reference="a9O-sn-lwS"/>
+                    <exclude reference="22g-V4-UN2"/>
+                    <exclude reference="BVh-Jj-uOL"/>
+                    <exclude reference="ImJ-s7-XgX"/>
+                    <exclude reference="Ld3-Q1-Trq"/>
+                    <exclude reference="lC2-Lw-I8i"/>
+                    <exclude reference="tyu-nJ-JgT"/>
+                    <exclude reference="7am-Nn-Knz"/>
+                    <exclude reference="Nfw-4W-6HJ"/>
+                    <exclude reference="xag-yI-eih"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=regular">
                 <mask key="subviews">
                     <include reference="HHb-CH-cOb"/>
                     <include reference="bCE-ae-dgP"/>
+                    <include reference="nCg-r7-RhK"/>
+                    <include reference="amk-Hj-HMb"/>
+                    <include reference="Iku-n7-YYO"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="RyG-ql-VJ7"/>
@@ -75,6 +120,15 @@
                     <include reference="39p-iq-7DB"/>
                     <include reference="LB2-CS-CS0"/>
                     <include reference="a9O-sn-lwS"/>
+                    <include reference="22g-V4-UN2"/>
+                    <include reference="BVh-Jj-uOL"/>
+                    <include reference="ImJ-s7-XgX"/>
+                    <include reference="Ld3-Q1-Trq"/>
+                    <include reference="lC2-Lw-I8i"/>
+                    <include reference="tyu-nJ-JgT"/>
+                    <include reference="7am-Nn-Knz"/>
+                    <include reference="Nfw-4W-6HJ"/>
+                    <include reference="xag-yI-eih"/>
                 </mask>
             </variation>
         </view>
