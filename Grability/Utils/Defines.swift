@@ -14,3 +14,4 @@ let IS_JSON_IN_CORE_DATA = "JSONINCOREDATA"
 
 //url de descarga del JSON
 let JSONUrl = "https://itunes.apple.com/us/rss/topfreeapplications/limit=20/json"
+

@@ -137,6 +137,38 @@ class IpadCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        //obtengo el objeto a mostrar
+        let app = self.fc.objectAtIndexPath(indexPath) as! ApplicationModel
+        
+        //cabecera de la seccion
+
+        var header : CollectionSection!
+        
+        if kind == UICollectionElementKindSectionHeader {
+            header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: CollectionSection.cellID(), forIndexPath: indexPath) as! CollectionSection
+            //            header.backgroundColor = UIColor.greenColor()
+            //
+            //            let label = UILabel(frame: header.bounds)
+            //            label.textColor =  UIColor.redColor()
+            //            if showByCategory {
+            //                label.text = app.category!.category
+            //            } else {
+            //                label.text = "Aplicaciones"
+            //            }
+            //            header.addSubview(label)
+        }
+        
+        if showByCategory {
+            header.label.text = app.category!.category
+        } else {
+            header.label.text = "Aplicaciones"
+        }
+
+        return header
+    }
 
     // MARK: UICollectionViewDelegate
 
@@ -172,6 +204,9 @@ class IpadCollectionViewController: UICollectionViewController {
     func registerNib() {
         let nib = UINib(nibName: "CollectionCell", bundle: NSBundle.mainBundle())
         self.collectionView!.registerNib(nib, forCellWithReuseIdentifier: CollectionCell.cellID())
+        
+        //vista de la seccion
+        self.collectionView!.registerClass(CollectionSection.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader , withReuseIdentifier: CollectionSection.cellID())
     }
     
     
