@@ -95,6 +95,16 @@ class IphoneTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    //MARK: - Table delegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //obtengo el objeto pulsado
+        let app = self.fc.objectAtIndexPath(indexPath) as! ApplicationModel
+        
+        //creo el controlador de detalle
+        let det = DetailViewController(nibName: "iPhoneDetailViewController", bundle: nil)
+        det.model = app
+        navigationController?.pushViewController(det, animated: true)
+    }
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -160,14 +170,6 @@ class IphoneTableViewController: UITableViewController {
         tableView.reloadData()
         
     }
-    //MARK: - Rotacion
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        
-        return [UIInterfaceOrientationMask.LandscapeLeft,UIInterfaceOrientationMask.LandscapeRight]
-  
-    }
+
 
 }

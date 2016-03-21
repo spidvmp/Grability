@@ -99,6 +99,18 @@ class IpadCollectionViewController: UICollectionViewController {
     }
     
 
+    //MARK: - delegate
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        //obtengo el item pulsado
+        let app = self.fc.objectAtIndexPath(indexPath) as! ApplicationModel
+        
+        //creo el controlador detalle
+        let det = DetailViewController(nibName: "iPadDetailViewController", bundle: nil)
+        det.model = app
+        
+        navigationController?.pushViewController(det, animated: true)
+    }
 
     // MARK: UICollectionViewDataSource
 
@@ -213,12 +225,5 @@ class IpadCollectionViewController: UICollectionViewController {
         
     }
 
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-            return [UIInterfaceOrientationMask.Portrait]
-       
-    }
 
 }
