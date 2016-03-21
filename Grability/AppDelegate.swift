@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        //inicializo el modelo y se lo encho al controlador
+        //inicializo el modelo y se lo enchufo al controlador
         let model = CatalogModel()
         
         var mainCont : UIViewController

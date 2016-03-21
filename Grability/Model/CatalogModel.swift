@@ -92,11 +92,11 @@ class CatalogModel {
             else {
                 return
             }
-//        guard let s = a["sumary"] as? JSONDictionary,
-//            let sumary = s["label"] as? String
-//            else {
-//                return
-//        }
+        guard let s = a["summary"] as? JSONDictionary,
+            let summary = s["label"] as? String
+            else {
+                return
+        }
         
         guard let c = a["category"] as? JSONDictionary,
             let cat = c["attributes"] as? JSONDictionary,
@@ -135,7 +135,7 @@ class CatalogModel {
         }
         
         //tengo los datos, los guardo en coredata
-        ApplicationModel(name: name, category: category, price: price, date: date, rights: rights, photo: photo, context: self.context())
+        _ = ApplicationModel(name: name, category: category, summary: summary, price: price, date: date, rights: rights, photo: photo, context: self.context())
         
     }
     

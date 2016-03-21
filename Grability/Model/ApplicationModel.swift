@@ -9,10 +9,11 @@ public class ApplicationModel: _ApplicationModel {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
-    init(name: String, category: String, price: String, date: String, rights: String, photo: String, context c: NSManagedObjectContext) {
+    init(name: String, category: String, summary: String, price: String, date: String, rights: String, photo: String, context c: NSManagedObjectContext) {
         super.init(entity: _ApplicationModel.entity(c), insertIntoManagedObjectContext: c)
         
         self.name = name
+        self.summary = summary
         self.price = price
         self.date = date
         self.rights = rights
