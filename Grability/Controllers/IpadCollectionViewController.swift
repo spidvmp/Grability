@@ -40,10 +40,6 @@ class IpadCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //self.collectionViewLayout = UICollectionViewLayout()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         //registro la celda
         registerNib()
@@ -149,16 +145,6 @@ class IpadCollectionViewController: UICollectionViewController {
         
         if kind == UICollectionElementKindSectionHeader {
             header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: CollectionSection.cellID(), forIndexPath: indexPath) as! CollectionSection
-            //            header.backgroundColor = UIColor.greenColor()
-            //
-            //            let label = UILabel(frame: header.bounds)
-            //            label.textColor =  UIColor.redColor()
-            //            if showByCategory {
-            //                label.text = app.category!.category
-            //            } else {
-            //                label.text = "Aplicaciones"
-            //            }
-            //            header.addSubview(label)
         }
         
         if showByCategory {

@@ -20,9 +20,6 @@ class CatalogModel {
     //cargo el userdefaults
     let def = NSUserDefaults.standardUserDefaults()
     
-    
-
-    
     func openWithCompletionHandler(completion:() -> Void) {
         //funcion de bajarse el json con los datos. Si ya estan cargados sale sin hacer nada, si no se los baja, lo desmenuza y lo pone en coredata
 
@@ -112,7 +109,7 @@ class CatalogModel {
             let pri = p["attributes"] as? JSONDictionary,
             let pri1 = pri["amount"] as? String ,
             let pri2 = pri["currency"] as? String,
-            let price = pri1 + pri2 as? String
+            let price : String = pri1 + pri2
             else {
                 return
         }
@@ -170,10 +167,7 @@ class CatalogModel {
     }
     
     func categoriesFetchedController() -> NSFetchedResultsController {
-//        return NSFetchedResultsController(fetchRequest: self.categoriesFetchRequest(),
-//            managedObjectContext: self.stack.context,
-//            sectionNameKeyPath: "category",
-//            cacheName: nil)
+
         return NSFetchedResultsController(fetchRequest: self.categoriesFetchRequest(),
             managedObjectContext: self.stack.context,
             sectionNameKeyPath: "category.category",
@@ -181,7 +175,7 @@ class CatalogModel {
     }
     func categoriesFetchRequest() -> NSFetchRequest {
         //fetch para buscar las aplicaciones
-        //let r = NSFetchRequest(entityName: CategoryModel.entityName())
+
         let r = NSFetchRequest(entityName: ApplicationModel.entityName())
         //solo hay 20, pero bueno, se lo pongo
         r.fetchBatchSize = 20
