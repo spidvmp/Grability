@@ -111,6 +111,8 @@ class IpadCollectionViewController: UICollectionViewController {
         
         navigationController?.pushViewController(det, animated: true)
     }
+    
+
 
     // MARK: UICollectionViewDataSource
 

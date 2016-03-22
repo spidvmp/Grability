@@ -53,13 +53,13 @@ extension _CategoryModel {
 
     func addApplication(objects: NSSet) {
         let mutable = self.application.mutableCopy() as! NSMutableSet
-        mutable.unionSet(objects as! Set<NSObject>)
+        mutable.unionSet(objects as Set<NSObject>)
         self.application = mutable.copy() as! NSSet
     }
 
     func removeApplication(objects: NSSet) {
         let mutable = self.application.mutableCopy() as! NSMutableSet
-        mutable.minusSet(objects as! Set<NSObject>)
+        mutable.minusSet(objects as Set<NSObject>)
         self.application = mutable.copy() as! NSSet
     }
 
